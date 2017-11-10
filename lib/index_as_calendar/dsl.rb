@@ -53,7 +53,10 @@ module IndexAsCalendar
           items = options[:model] || end_of_association_chain
           items = items.send(params[:scope]) if params[:scope].present?
           items = items.includes(options[:includes]) unless options[:includes].blank?
-          items = items.where(options[:start_date] => params[:start].to_date...params[:end].to_date).ransack(params[:q]).result
+          items = items
+            .where(options[:start_date] => params[:start].to_date...params[:end].to_date)
+            .or.where(options[:end_date] => params[:start].to_date...params[:end].to_date)
+            .ransack(params[:q]).result
 
           events = event_mapping(items, options)
 
