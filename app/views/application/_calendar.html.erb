@@ -15,7 +15,11 @@
           content: event.tooltip,
           style: {
             classes: 'qtip-shadow'
-          }
+          },
+          position: {
+              my: 'bottom center',  // Position my top left...
+              at: 'bottom center', // at the bottom right of...
+          },
         });
       },
       events: <%= events.to_json.html_safe %>
