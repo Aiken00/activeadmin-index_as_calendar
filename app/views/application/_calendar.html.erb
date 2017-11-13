@@ -11,15 +11,29 @@
         right: 'prev,today,next month,basicWeek,basicDay'
       },
       eventRender: function( event, element, view ){
+        var position_json = {};
+        if (
+          view == 'listWeek' ||
+          view == 'month' ||
+          event.allDay == true
+        ){
+          position_json = {
+              my: 'top center',  // Position my top left...
+              at: 'bottom center', // at the bottom right of...
+          }
+        }
+        else{
+          position_json = {
+              my: 'left center',  // Position my top left...
+              at: 'right center', // at the bottom right of...
+          }
+        }
         element.qtip({
           content: event.tooltip,
           style: {
             classes: 'qtip-shadow'
           },
-          position: {
-              my: 'top center',  // Position my top left...
-              at: 'bottom center', // at the bottom right of...
-          },
+          position: position_json,
         });
       },
       events: <%= events.to_json.html_safe %>
