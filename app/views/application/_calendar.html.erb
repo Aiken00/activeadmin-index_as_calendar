@@ -12,10 +12,9 @@
       },
       eventRender: function( event, element, view ){
         var position_json = {};
-        console.log(view);
         if (
-          view == 'listWeek' ||
-          view == 'month' ||
+          view.type == 'listWeek' ||
+          view.type == 'month' ||
           event.allDay == true
         ){
           position_json = {
