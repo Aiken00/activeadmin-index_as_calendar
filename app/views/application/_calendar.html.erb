@@ -12,6 +12,7 @@
       },
       eventRender: function( event, element, view ){
         var position_json = {};
+        console.log(view);
         if (
           view == 'listWeek' ||
           view == 'month' ||
@@ -30,7 +31,7 @@
         element.qtip({
           content: event.tooltip,
           style: {
-            classes: 'qtip-shadow'
+            classes: 'qtip-light qtip-shadow'
           },
           position: position_json,
         });
